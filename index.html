@@ -5,15 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MUTINY</title>
 <style>
-body { margin:0; font-family: Arial,sans-serif; background:#1a1a1a; color:#fff; text-align:center; line-height:1.6; direction: rtl; }
-h1 { font-size:50px; font-weight:bold; margin:20px 0; }
-.subtitle { font-size:22px; margin-bottom:30px; }
-h2 { font-size:36px; margin-top:30px; }
-h3 { font-size:24px; margin-top:20px; }
-p { font-size:18px; max-width:800px; margin:15px auto; text-align: right; }
+body { margin:0; font-family: Arial,sans-serif; background:#1a1a1a; color:#fff; text-align:center; line-height:1.6; }
+h1 { font-size:50px; font-weight:bold; margin:20px 0; text-align:center; }
+.subtitle { font-size:22px; margin-bottom:30px; text-align:center; }
+h2 { font-size:36px; margin-top:30px; text-align:center; }
+h3 { font-size:24px; margin-top:20px; text-align:center; }
 .section { display:none; margin:20px; }
 .section.active { display:block; }
 img { width:80%; max-width:600px; margin:20px auto; display:block; border-radius:10px; }
+
+.center-text {
+  display: inline-block;
+  max-width: 800px;
+  text-align: center;
+  direction: rtl; /* ضبط ترتيب العربية والإنجليزية */
+}
+
 .kit-image { width:50%; max-width:300px; margin:10px auto; display:block; border-radius:10px; }
 
 #sidebar {
@@ -45,17 +52,18 @@ position: fixed; right: -260px; top:0; width:250px; height:100%; background:#333
 <div class="main-content">
 
 <!-- الصفحة الرئيسية -->
-<section id="home" class="section active" dir="rtl">
+<section id="home" class="section active">
 <h1>MUTINY</h1>
-<p class="subtitle">أهلاً بك في أفضل نادي في FC26</p>
+<p class="subtitle center-text">أهلاً بك في أفضل نادي في FC26</p>
 <img src="club1.jpg" alt="Club Image">
 </section>
 
 <!-- عن MUTINY -->
-<section id="about" class="section" dir="rtl">
+<section id="about" class="section">
 <h2>عن MUTINY</h2>
 <img src="club.jpg" alt="About Club">
-<p>MUTINY، النادي صاحب الفكر المستقبلي الذي سيغيّر معنى البرو كلوب، وذلك لا يقتصر فقط على تصميم النادي وأزياء اللاعبين، بل وأيضًا على اللاعبين أنفسهم، ومرافق النادي، وكذلك لاعبو الذكاء الاصطناعي في الفريق (BOTS)، وإحدى هذه الأفكار هي إنشاء هذا الموقع الخاص بالنادي."نحن لا نتبع القواعد... نحن نتمرّد."      
+<p class="center-text">
+MUTINY، النادي صاحب الفكر المستقبلي الذي سيغيّر معنى البرو كلوب، وذلك لا يقتصر فقط على تصميم النادي وأزياء اللاعبين، بل وأيضًا على اللاعبين أنفسهم، ومرافق النادي، وكذلك لاعبو الذكاء الاصطناعي في الفريق (BOTS)، وإحدى هذه الأفكار هي إنشاء هذا الموقع الخاص بالنادي."نحن لا نتبع القواعد... نحن نتمرّد."      
 في هذا النادي، نحن لا نسير خلف أحد،      
 نحن نكسر القواعد، ونخلق طريقنا الخاص.            
 وُلد MUTINY من رحم الفوضى    
@@ -64,68 +72,71 @@ position: fixed; right: -260px; top:0; width:250px; height:100%; background:#333
 أن تقف ضد التيار، أن تلعب بأسلوبك، وأن تفرض هيبتك دون إذن أحد.      
 نحن الفريق الذي لا يخشى المجازفة،      
 نُهاجم بعزيمة لا تنكسر،      
-وندافع بشراسة لا تُقهر.</p>
-<p>MUTINY ليس مجرد نادي...</p>
+وندافع بشراسة لا تُقهر.
+            "MUTINY ليس مجرد نادي..."
+
+</p>
+<p class="center-text">MUTINY ليس مجرد نادي...</p>
 </section>
 
 <!-- إنجازات النادي -->
-<section id="achievements" class="section" dir="rtl">
+<section id="achievements" class="section">
 <h2>إنجازات النادي</h2>
 <img src="trophy.jpg" alt="Trophy">
-<p>نادي MUTINY معكم يصنع التاريخ بإذن الله تعالى</p>
+<p class="center-text">نادي MUTINY معكم يصنع التاريخ بإذن الله تعالى</p>
 </section>
 
 <!-- إحصائيات اللاعبين -->
-<section id="stats" class="section" dir="rtl">
+<section id="stats" class="section">
 <h2>إحصائيات اللاعبين</h2>
 <img src="stats.jpg" alt="Stats">
 <h3>الأكثر تهديفاً:</h3>
-<p>1- بـ ( ) هدف</p>
-<p>2- بـ ( ) هدف</p>
-<p>3- بـ ( ) هدف</p>
+<p class="center-text">1- بـ ( ) هدف</p>
+<p class="center-text">2- بـ ( ) هدف</p>
+<p class="center-text">3- بـ ( ) هدف</p>
 
 <h3>الأكثر صناعة:</h3>
-<p>1- بـ ( ) صناعة</p>
-<p>2- بـ ( ) صناعة</p>
-<p>3- بـ ( ) صناعة</p>
+<p class="center-text">1- بـ ( ) صناعة</p>
+<p class="center-text">2- بـ ( ) صناعة</p>
+<p class="center-text">3- بـ ( ) صناعة</p>
 
 <h3>نجوم مباريات النادي:</h3>
-<p>1- ( ) رجل المباراة ( ) مرة</p>
-<p>2- ( ) رجل المباراة ( ) مرة</p>
-<p>3- ( ) رجل المباراة ( ) مرة</p>
+<p class="center-text">1- ( ) رجل المباراة ( ) مرة</p>
+<p class="center-text">2- ( ) رجل المباراة ( ) مرة</p>
+<p class="center-text">3- ( ) رجل المباراة ( ) مرة</p>
 </section>
 
 <!-- الرؤساء -->
-<section id="presidents" class="section" dir="rtl">
+<section id="presidents" class="section">
 <h2>الرؤساء</h2>
 <img src="president.jpg" alt="Presidents">
-<p>سالم الشهري</p>
-<p>Online ID: sa-1-0</p>
-<p>إبراهيم الشهري</p>
-<p>Online ID: IBRA_SH47</p>
-<p>عبدالله الشهري</p>
-<p>Online ID: ad_7ull</p>
-<p>أحمد الشهري</p>
-<p>Online ID: NINJA_AL507</p>
+<p class="center-text">سالم الشهري</p>
+<p class="center-text">Online ID: sa-1-0</p>
+<p class="center-text">إبراهيم الشهري</p>
+<p class="center-text">Online ID: IBRA_SH47</p>
+<p class="center-text">عبدالله الشهري</p>
+<p class="center-text">Online ID: ad_7ull</p>
+<p class="center-text">أحمد الشهري</p>
+<p class="center-text">Online ID: NINJA_AL507</p>
 </section>
 
 <!-- أطقم وملعب النادي -->
-<section id="kits" class="section" dir="rtl">
+<section id="kits" class="section">
 <h2>أطقم وملعب النادي</h2>
 <img src="kits.jpg" alt="Kits">
-<p>ملعب نادي MUTINY ( ) بسعة ( ) مشجع.</p>
+<p class="center-text">ملعب نادي MUTINY ( ) بسعة ( ) مشجع.</p>
 
 <img src="kits1.jpg" class="kit-image" alt="Kit 1">
-<p>الطقم الأول</p>
+<p class="center-text">الطقم الأول</p>
 
 <img src="kits2.jpg" class="kit-image" alt="Kit 2">
-<p>الطقم الثاني</p>
+<p class="center-text">الطقم الثاني</p>
 
 <img src="kits3.jpg" class="kit-image" alt="Kit 3">
-<p>الطقم الثالث</p>
+<p class="center-text">الطقم الثالث</p>
 
 <img src="kits4.jpg" class="kit-image" alt="Goalkeeper Kit">
-<p>طقم الحراس</p>
+<p class="center-text">طقم الحراس</p>
 </section>
 
 <script>
