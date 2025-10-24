@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MUTINY</title>
 <style>
-body { margin:0; font-family: Arial,sans-serif; background:#1a1a1a; color:#fff; text-align:center; line-height:1.6; }
+body { margin:0; font-family: Arial,sans-serif; background:#1a1a1a; color:#fff; text-align:center; line-height:1.6; direction: rtl; }
 h1 { font-size:50px; font-weight:bold; margin:20px 0; }
 .subtitle { font-size:22px; margin-bottom:30px; }
 h2 { font-size:36px; margin-top:30px; }
 h3 { font-size:24px; margin-top:20px; }
-p { font-size:18px; max-width:800px; margin:15px auto; }
+p { font-size:18px; max-width:800px; margin:15px auto; text-align: right; }
 .section { display:none; margin:20px; }
 .section.active { display:block; }
 img { width:80%; max-width:600px; margin:20px auto; display:block; border-radius:10px; }
@@ -20,7 +20,7 @@ img { width:80%; max-width:600px; margin:20px auto; display:block; border-radius
 position: fixed; right: -260px; top:0; width:250px; height:100%; background:#333; padding-top:60px; transition:right 0.3s; z-index:999;
 }
 #sidebar ul { list-style:none; padding:0; }
-#sidebar ul li { padding:15px; border-bottom:1px solid #555; cursor:pointer; }
+#sidebar ul li { padding:15px; border-bottom:1px solid #555; cursor:pointer; text-align: right; }
 #sidebar ul li:hover { background:#555; }
 #sidebar.active { right:0; }
 
@@ -45,29 +45,38 @@ position: fixed; right: -260px; top:0; width:250px; height:100%; background:#333
 <div class="main-content">
 
 <!-- الصفحة الرئيسية -->
-<section id="home" class="section active">
+<section id="home" class="section active" dir="rtl">
 <h1>MUTINY</h1>
-<p class="subtitle">أهلاً بك في أفضل نادي في fC26</p>
+<p class="subtitle">أهلاً بك في أفضل نادي في FC26</p>
 <img src="club1.jpg" alt="Club Image">
 </section>
 
 <!-- عن MUTINY -->
-<section id="about" class="section">
+<section id="about" class="section" dir="rtl">
 <h2>عن MUTINY</h2>
 <img src="club.jpg" alt="About Club">
-<p>MUTINY، النادي صاحب الفكر المستقبلي الذي سيغيّر معنى البرو كلوب، وذلك لا يقتصر فقط على تصميم النادي وأزياء اللاعبين، بل وأيضًا على اللاعبين أنفسهم، ومرافق النادي، وكذلك لاعبو الذكاء الاصطناعي في الفريق (BOTS)، وإحدى هذه الأفكار هي إنشاء هذا الموقع الخاص بالنادي.</p>
+<p>MUTINY، النادي صاحب الفكر المستقبلي الذي سيغيّر معنى البرو كلوب، وذلك لا يقتصر فقط على تصميم النادي وأزياء اللاعبين، بل وأيضًا على اللاعبين أنفسهم، ومرافق النادي، وكذلك لاعبو الذكاء الاصطناعي في الفريق (BOTS)، وإحدى هذه الأفكار هي إنشاء هذا الموقع الخاص بالنادي."نحن لا نتبع القواعد... نحن نتمرّد."      
+في هذا النادي، نحن لا نسير خلف أحد،      
+نحن نكسر القواعد، ونخلق طريقنا الخاص.            
+وُلد MUTINY من رحم الفوضى    
+اسمنا يعني التمرّد، العصيان، ورفض الخضوع.      
+لسنا مجرد نادٍ، بل فكرة:      
+أن تقف ضد التيار، أن تلعب بأسلوبك، وأن تفرض هيبتك دون إذن أحد.      
+نحن الفريق الذي لا يخشى المجازفة،      
+نُهاجم بعزيمة لا تنكسر،      
+وندافع بشراسة لا تُقهر.</p>
 <p>MUTINY ليس مجرد نادي...</p>
 </section>
 
 <!-- إنجازات النادي -->
-<section id="achievements" class="section">
+<section id="achievements" class="section" dir="rtl">
 <h2>إنجازات النادي</h2>
 <img src="trophy.jpg" alt="Trophy">
 <p>نادي MUTINY معكم يصنع التاريخ بإذن الله تعالى</p>
 </section>
 
 <!-- إحصائيات اللاعبين -->
-<section id="stats" class="section">
+<section id="stats" class="section" dir="rtl">
 <h2>إحصائيات اللاعبين</h2>
 <img src="stats.jpg" alt="Stats">
 <h3>الأكثر تهديفاً:</h3>
@@ -87,7 +96,7 @@ position: fixed; right: -260px; top:0; width:250px; height:100%; background:#333
 </section>
 
 <!-- الرؤساء -->
-<section id="presidents" class="section">
+<section id="presidents" class="section" dir="rtl">
 <h2>الرؤساء</h2>
 <img src="president.jpg" alt="Presidents">
 <p>سالم الشهري</p>
@@ -101,7 +110,7 @@ position: fixed; right: -260px; top:0; width:250px; height:100%; background:#333
 </section>
 
 <!-- أطقم وملعب النادي -->
-<section id="kits" class="section">
+<section id="kits" class="section" dir="rtl">
 <h2>أطقم وملعب النادي</h2>
 <img src="kits.jpg" alt="Kits">
 <p>ملعب نادي MUTINY ( ) بسعة ( ) مشجع.</p>
