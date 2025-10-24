@@ -1,73 +1,40 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MUTINY</title>
 <style>
-body { margin:0; font-family: Arial,sans-serif; background:#1a1a1a; color:#fff; text-align:center; line-height:1.6; }
-h1 { font-size:50px; font-weight:bold; margin:20px 0; text-align:center; }
-.subtitle { font-size:22px; margin-bottom:30px; text-align:center; }
-h2 { font-size:36px; margin-top:30px; text-align:center; }
-h3 { font-size:24px; margin-top:20px; text-align:center; }
+body {
+    margin:0; font-family: Arial,sans-serif; background:#1a1a1a; color:#fff; text-align:center; line-height:1.6;
+}
+h1 { font-size:50px; font-weight:bold; margin:20px 0; }
+h2 { font-size:36px; margin-top:30px; }
+h3 { font-size:24px; margin-top:20px; }
+.subtitle { font-size:22px; margin-bottom:30px; }
 .section { display:none; margin:20px; }
 .section.active { display:block; }
 img { width:80%; max-width:600px; margin:20px auto; display:block; border-radius:10px; }
-
-.center-text {
-  display: inline-block;
-  max-width: 800px;
-  text-align: center;
-  direction: rtl;
-  word-wrap: break-word;
-  white-space: normal;
+.center-text, .mutiny-text, .player, .stats-text {
+    text-align:center;
+    direction:rtl;
+    unicode-bidi:embed;
+    margin-bottom:20px;
+    line-height:1.8;
+    font-size:18px;
 }
-
 .kit-image { width:50%; max-width:300px; margin:10px auto; display:block; border-radius:10px; }
-
-#sidebar {
-position: fixed; right: -260px; top:0; width:250px; height:100%; background:#333; padding-top:60px; transition:right 0.3s; z-index:999;
-}
+#sidebar { position:fixed; right:-260px; top:0; width:250px; height:100%; background:#333; padding-top:60px; transition:right 0.3s; z-index:999; }
 #sidebar ul { list-style:none; padding:0; }
-#sidebar ul li { padding:15px; border-bottom:1px solid #555; cursor:pointer; text-align: right; }
+#sidebar ul li { padding:15px; border-bottom:1px solid #555; cursor:pointer; text-align:right; }
 #sidebar ul li:hover { background:#555; }
 #sidebar.active { right:0; }
-
 #menu-btn { position:fixed; top:10px; left:10px; z-index:1000; padding:10px 15px; background:#333; border:none; color:#fff; cursor:pointer; border-radius:5px; }
-  <head>
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<title>MUTINY Club</title>
-<style>
-/* نصوص النادي */
-.mutiny-text {
-  direction: rtl;        /* اتجاه من اليمين لليسار */
-  text-align: center;    /* محاذاة للنص في الوسط */
-  line-height: 2;        /* ارتفاع الأسطر */
-  margin-bottom: 25px;   /* مسافة بين الفقرات */
-  font-size: 18px;
-  unicode-bidi: embed;   /* يحل مشكلة العربي + الإنجليزي */
-}
-
-/* قائمة اللاعبين */
-.player {
-  text-align: center;
-  margin-bottom: 25px;
-  line-height: 1.8;
-  font-size: 18px;
-}
-</style>
-</head>
-<body>
-<body>
 </style>
 </head>
 <body>
 
 <button id="menu-btn">قائمة</button>
-
 <div id="sidebar">
 <ul>
 <li onclick="showSection('home')">الرئيسية</li>
@@ -81,114 +48,98 @@ position: fixed; right: -260px; top:0; width:250px; height:100%; background:#333
 
 <div class="main-content">
 
-<!-- الصفحة الرئيسية -->
 <section id="home" class="section active">
 <h1>MUTINY</h1>
-<p class="subtitle center-text">أهلاً بك في أفضل نادي في FC26</p>
+<p class="subtitle">أهلاً بك في أفضل نادي في FC26</p>
 <img src="club1.jpg" alt="Club Image">
 </section>
 
-<!-- عن نادينا -->
 <section id="about" class="section">
 <h2>عن MUTINY</h2>
 <img src="club.jpg" alt="About Club">
-
 <div class="mutiny-text">
-  "MUTINY، النادي صاحب الفكر المستقبلي الذي سيغيّر معنى البرو كلوب، وذلك لا يقتصر فقط على تصميم النادي وأزياء اللاعبين، بل وأيضًا على اللاعبين أنفسهم، ومرافق النادي، وكذلك لاعبو الذكاء الاصطناعي في الفريق (BOTS)، وإحدى هذه الأفكار هي إنشاء هذا الموقع الخاص بالنادي."
+"MUTINY، النادي صاحب الفكر المستقبلي الذي سيغيّر معنى البرو كلوب، وذلك لا يقتصر فقط على تصميم النادي وأزياء اللاعبين، بل وأيضًا على اللاعبين أنفسهم، ومرافق النادي، وكذلك لاعبو الذكاء الاصطناعي في الفريق (BOTS)، وإحدى هذه الأفكار هي إنشاء هذا الموقع الخاص بالنادي."
 </div>
-
 <div class="mutiny-text">
-  "نحن لا نتبع القواعد... نحن نتمرّد."
+"نحن لا نتبع القواعد... نحن نتمرّد."
 </div>
-
 <div class="mutiny-text">
-  في هذا النادي، نحن لا نسير خلف أحد،<br>
-  نحن نكسر القواعد، ونخلق طريقنا الخاص.<br>
-  وُلد MUTINY من رحم الفوضى<br>
-  اسمنا يعني التمرّد، العصيان، ورفض الخضوع.<br>
-  لسنا مجرد نادٍ، بل فكرة:<br>
-  أن تقف ضد التيار، أن تلعب بأسلوبك، وأن تفرض هيبتك دون إذن أحد.<br>
-  نحن الفريق الذي لا يخشى المجازفة،<br>
-  نُهاجم بعزيمة لا تنكسر،<br>
-  وندافع بشراسة لا تُقهر.
+في هذا النادي، نحن لا نسير خلف أحد،<br>
+نحن نكسر القواعد، ونخلق طريقنا الخاص.<br>
+وُلد MUTINY من رحم الفوضى<br>
+اسمنا يعني التمرّد، العصيان، ورفض الخضوع.<br>
+لسنا مجرد نادٍ، بل فكرة:<br>
+أن تقف ضد التيار، أن تلعب بأسلوبك، وأن تفرض هيبتك دون إذن أحد.<br>
+نحن الفريق الذي لا يخشى المجازفة،<br>
+نُهاجم بعزيمة لا تنكسر،<br>
+وندافع بشراسة لا تُقهر.
 </div>
-
 <div class="mutiny-text">
-  "MUTINY ليس مجرد نادي..."
-</div></section>
+"MUTINY ليس مجرد نادي..."
+</div>
+</section>
 
-<!-- إنجازات النادي -->
 <section id="achievements" class="section">
 <h2>إنجازات النادي</h2>
 <img src="trophy.jpg" alt="Trophy">
 <p class="center-text">نادي MUTINY معكم يصنع التاريخ بإذن الله تعالى</p>
 </section>
 
-<!-- إحصائيات اللاعبين -->
 <section id="stats" class="section">
 <h2>إحصائيات اللاعبين</h2>
 <img src="stats.jpg" alt="Stats">
-<section id="stats">
+<h3>الأكثر تهديفاً:</h3>
+<p class="stats-text">1- بـ ( ) هدف</p>
+<p class="stats-text">2- بـ ( ) هدف</p>
+<p class="stats-text">3- بـ ( ) هدف</p>
 
-  <h3>الأكثر تهديفاً:</h3>
-  <p class="center-text" dir="rtl">1- بـ ( ) هدف</p>
-  <p class="center-text" dir="rtl">2- بـ ( ) هدف</p>
-  <p class="center-text" dir="rtl">3- بـ ( ) هدف</p>
+<h3>الأكثر صناعة:</h3>
+<p class="stats-text">1- بـ ( ) صناعة</p>
+<p class="stats-text">2- بـ ( ) صناعة</p>
+<p class="stats-text">3- بـ ( ) صناعة</p>
 
-  <h3>الأكثر صناعة:</h3>
-  <p class="center-text" dir="rtl">1- بـ ( ) صناعة</p>
-  <p class="center-text" dir="rtl">2- بـ ( ) صناعة</p>
-  <p class="center-text" dir="rtl">3- بـ ( ) صناعة</p>
-
-  <h3>نجوم مباريات النادي:</h3>
-  <p class="center-text" dir="rtl">1- ( ) رجل المباراة ( ) مرة</p>
-  <p class="center-text" dir="rtl">2- ( ) رجل المباراة ( ) مرة</p>
-  <p class="center-text" dir="rtl">3- ( ) رجل المباراة ( ) مرة</p>
-
+<h3>نجوم مباريات النادي:</h3>
+<p class="stats-text">1- ( ) رجل المباراة ( ) مرة</p>
+<p class="stats-text">2- ( ) رجل المباراة ( ) مرة</p>
+<p class="stats-text">3- ( ) رجل المباراة ( ) مرة</p>
 </section>
-<!-- الرؤساء -->
+
 <section id="presidents" class="section">
 <h2>الرؤساء</h2>
 <img src="president.jpg" alt="Presidents">
-
 <div class="player">
-  "سالم الشهري"<br>
-  "Online ID: sa-1-0"
+"سالم الشهري"<br>
+"Online ID: sa-1-0"
 </div>
-
 <div class="player">
-  "إبراهيم الشهري"<br>
-  "Online ID: IBRA_SH47"
+"إبراهيم الشهري"<br>
+"Online ID: IBRA_SH47"
 </div>
-
 <div class="player">
-  "عبدالله الشهري"<br>
-  "Online ID: ad_7ull"
+"عبدالله الشهري"<br>
+"Online ID: ad_7ull"
 </div>
-
 <div class="player">
-  "أحمد الشهري"<br>
-  "Online ID: NINJA_AL507"
-</div></section>
+"أحمد الشهري"<br>
+"Online ID: NINJA_AL507"
+</div>
+</section>
 
-<!-- أطقم وملعب النادي -->
 <section id="kits" class="section">
 <h2>أطقم وملعب النادي</h2>
 <img src="kits.jpg" alt="Kits">
 <p class="center-text">ملعب نادي MUTINY ( ) بسعة ( ) مشجع.</p>
-
 <img src="kits1.jpg" class="kit-image" alt="Kit 1">
 <p class="center-text">الطقم الأول</p>
-
 <img src="kits2.jpg" class="kit-image" alt="Kit 2">
 <p class="center-text">الطقم الثاني</p>
-
 <img src="kits3.jpg" class="kit-image" alt="Kit 3">
 <p class="center-text">الطقم الثالث</p>
-
 <img src="kits4.jpg" class="kit-image" alt="Goalkeeper Kit">
 <p class="center-text">طقم الحراس</p>
 </section>
+
+</div>
 
 <script>
 const menuBtn = document.getElementById('menu-btn');
