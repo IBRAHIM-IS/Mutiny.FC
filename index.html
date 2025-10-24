@@ -1,116 +1,102 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUTINY</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: #fff;
-            line-height: 1.6;
-            text-align: center;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUTINY</title>
+<style>
+body { margin:0; font-family: Arial,sans-serif; background:#1a1a1a; color:#fff; text-align:center; line-height:1.6; }
+h1 { font-size:50px; font-weight:bold; margin:20px 0; }
+.subtitle { font-size:22px; margin-bottom:30px; }
+h2 { font-size:36px; margin-top:30px; }
+h3 { font-size:24px; margin-top:20px; }
+p { font-size:18px; max-width:800px; margin:15px auto; }
+.section { display:none; margin:20px; }
+.section.active { display:block; }
+img { width:80%; max-width:600px; margin:20px auto; display:block; border-radius:10px; }
+.kit-image { width:50%; max-width:300px; margin:10px auto; display:block; border-radius:10px; }
 
-        h1 { font-size: 50px; font-weight: bold; margin:20px 0; }
-        .subtitle { font-size: 22px; margin-bottom: 30px; }
-        h2 { font-size: 36px; margin-top: 30px; }
-        p { font-size: 18px; max-width: 800px; margin: 15px auto; }
+#sidebar {
+position: fixed; right: -260px; top:0; width:250px; height:100%; background:#333; padding-top:60px; transition:right 0.3s; z-index:999;
+}
+#sidebar ul { list-style:none; padding:0; }
+#sidebar ul li { padding:15px; border-bottom:1px solid #555; cursor:pointer; }
+#sidebar ul li:hover { background:#555; }
+#sidebar.active { right:0; }
 
-        .section { display: none; margin:20px; }
-        .section.active { display: block; }
-
-        img { width: 80%; max-width:600px; margin:20px auto; display:block; border-radius:10px; }
-
-        /* قائمة جانبية */
-        #sidebar {
-            position: fixed;
-            right: -260px;
-            top: 0;
-            width: 250px;
-            height: 100%;
-            background-color: #333;
-            padding-top: 60px;
-            transition: right 0.3s;
-            z-index: 999;
-        }
-        #sidebar ul { list-style:none; padding:0; }
-        #sidebar ul li { padding: 15px; border-bottom:1px solid #555; cursor:pointer; }
-        #sidebar ul li:hover { background-color:#555; }
-        #sidebar.active { right: 0; }
-
-        /* زر القائمة */
-        #menu-btn {
-            position: fixed;
-            top:10px;
-            left:10px;
-            z-index:1000;
-            padding:10px 15px;
-            background-color:#333;
-            border:none;
-            color:#fff;
-            cursor:pointer;
-            border-radius:5px;
-        }
-    </style>
+#menu-btn { position:fixed; top:10px; left:10px; z-index:1000; padding:10px 15px; background:#333; border:none; color:#fff; cursor:pointer; border-radius:5px; }
+</style>
 </head>
 <body>
 
 <button id="menu-btn">قائمة</button>
 
 <div id="sidebar">
-    <ul>
-        <li onclick="showSection('home')">الرئيسية</li>
-        <li onclick="showSection('about')">عن MUTINY</li>
-        <li onclick="showSection('achievements')">إنجازات النادي</li>
-        <li onclick="showSection('stats')">إحصائيات اللاعبين</li>
-        <li onclick="showSection('presidents')">الرؤساء</li>
-        <li onclick="showSection('kits')">أطقم وملعب النادي</li>
-    </ul>
+<ul>
+<li onclick="showSection('home')">الرئيسية</li>
+<li onclick="showSection('about')">عن النادي</li>
+<li onclick="showSection('achievements')">إنجازات النادي</li>
+<li onclick="showSection('stats')">إحصائيات اللاعبين</li>
+<li onclick="showSection('presidents')">الرؤساء</li>
+<li onclick="showSection('kits')">أطقم النادي</li>
+</ul>
 </div>
 
 <div class="main-content">
 
 <!-- الصفحة الرئيسية -->
 <section id="home" class="section active">
-    <img src="{{ url_for('static', filename='images/club1.jpg') }}">
-    <h1>MUTINY</h1>
-    <p class="subtitle">أهلاً بك في أفضل نادي في fC26</p>
+<h1>{{ data.home.title }}</h1>
+<p class="subtitle">{{ data.home.subtitle }}</p>
 </section>
 
+<!-- عن MUTINY -->
 <section id="about" class="section">
-    <h2>عن MUTINY</h2>
-    <img src="{{ url_for('static', filename='images/club.jpg') }}">
-    <p>MUTINY، النادي صاحب الفكر المستقبلي الذي سيغيّر معنى البرو كلوب...</p>
-    <p>"نحن لا نتبع القواعد... نحن نتمرّد." في هذا النادي، نحن لا نسير خلف أحد...</p>
+<h2>عن MUTINY</h2>
+<img src="{{ url_for('static', filename='images/' + data.about.image) }}">
+{% for para in data.about.paragraphs %}
+<p>{{ para }}</p>
+{% endfor %}
 </section>
 
+<!-- إنجازات النادي -->
 <section id="achievements" class="section">
-    <h2>إنجازات النادي</h2>
-    <img src="{{ url_for('static', filename='images/trophy.jpg') }}">
-    <p>نادي MUTINY معكم يصنع التاريخ بإذن الله تعالى</p>
+<h2>إنجازات النادي</h2>
+<img src="{{ url_for('static', filename='images/' + data.achievements.image) }}">
+<p>{{ data.achievements.text }}</p>
 </section>
 
+<!-- إحصائيات اللاعبين -->
 <section id="stats" class="section">
-    <h2>إحصائيات اللاعبين</h2>
-    <img src="{{ url_for('static', filename='images/stats.jpg') }}">
+<h2>إحصائيات اللاعبين</h2>
+<img src="{{ url_for('static', filename='images/' + data.stats.image) }}">
+<h3>الأكثر تهديفاً:</h3>
+{% for goal in data.stats.goals %}<p>{{ goal }}</p>{% endfor %}
+<h3>الأكثر صناعة:</h3>
+{% for assist in data.stats.assists %}<p>{{ assist }}</p>{% endfor %}
+<h3>نجوم مباريات النادي:</h3>
+{% for mom in data.stats.man_of_match %}<p>{{ mom }}</p>{% endfor %}
 </section>
 
+<!-- الرؤساء -->
 <section id="presidents" class="section">
-    <h2>الرؤساء</h2>
-    <img src="{{ url_for('static', filename='images/president.jpg') }}">
+<h2>الرؤساء</h2>
+<img src="{{ url_for('static', filename='images/' + data.presidents.image) }}">
+{% for pres in data.presidents.names %}
+<p>{{ pres.name }}</p>
+<p>Online ID: {{ pres.id }}</p>
+{% endfor %}
 </section>
 
+<!-- أطقم وملعب النادي -->
 <section id="kits" class="section">
-    <h2>أطقم وملعب النادي</h2>
-    <img src="{{ url_for('static', filename='images/kits.jpg') }}">
-    <p>ملعب نادي MUTINY ( ) بسعة ( ) مشجع.</p>
-    <img src="{{ url_for('static', filename='images/kits1.jpg') }}">
-    <img src="{{ url_for('static', filename='images/kits2.jpg') }}">
-    <img src="{{ url_for('static', filename='images/kits3.jpg') }}">
-    <img src="{{ url_for('static', filename='images/kits4.jpg') }}">
+<h2>أطقم وملعب النادي</h2>
+<img src="{{ url_for('static', filename='images/' + data.kits.image) }}">
+<p>{{ data.kits.stadium }}</p>
+{% for kit in data.kits.kits_images %}
+<img src="{{ url_for('static', filename='images/' + kit.image) }}" class="kit-image">
+<p>{{ kit.name }}</p>
+{% endfor %}
 </section>
 
 <script>
@@ -118,20 +104,16 @@ const menuBtn = document.getElementById('menu-btn');
 const sidebar = document.getElementById('sidebar');
 const sections = document.querySelectorAll('.section');
 
-menuBtn.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-});
+menuBtn.addEventListener('click', () => { sidebar.classList.toggle('active'); });
 
-document.addEventListener('click', (e) => {
-    if (!sidebar.contains(e.target) && e.target !== menuBtn) {
-        sidebar.classList.remove('active');
-    }
+document.addEventListener('click', (e) => { 
+if(!sidebar.contains(e.target) && e.target !== menuBtn) sidebar.classList.remove('active');
 });
 
 function showSection(id) {
-    sections.forEach(sec => sec.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    sidebar.classList.remove('active');
+sections.forEach(sec => sec.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+sidebar.classList.remove('active');
 }
 </script>
 
