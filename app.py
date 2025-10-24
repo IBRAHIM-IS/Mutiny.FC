@@ -1,117 +1,109 @@
-from flask import Flask, render_template, abort
+import streamlit as st
+from PIL import Image
 
-app = Flask(__name__)
+# --- إعداد الصفحة ---
+st.set_page_config(
+    page_title="MUTINY",
+    layout="wide",
+)
 
-# محتوى الموقع كما طلبت
-pages = {
-    "home": {
-        "title": "MUTINY",
-        "hero_image": "club1.jpg",
-        "hero_big": True,
-        "content_html": None
-    },
-    "about": {
-        "title": "عن MUTINY",
-        "hero_image": "club.jpg",
-        "content_html": """
-<p><strong>MUTINY</strong>، النادي صاحب الفكر المستقبلي الذي سيغيّر معنى البرو كلوب، وذلك لا يقتصر فقط على تصميم النادي وأزياء اللاعبين، بل وأيضًا على اللاعبين أنفسهم، ومرافق النادي، وكذلك لاعبو الذكاء الاصطناعي في الفريق (BOTS)، وإحدى هذه الأفكار هي إنشاء هذا الموقع الخاص بالنادي.</p>
+# --- قائمة جانبية ---
+st.sidebar.title("القائمة")
+menu = st.sidebar.radio(
+    "اختر القسم",
+    ("الصفحة الرئيسية", "عن MUTINY", "منجزات النادي", "إحصائيات اللاعبين", "الرؤساء", "أطقم وملعب النادي")
+)
 
-<blockquote><em>"نحن لا نتبع القواعد... نحن نتمرّد."</em></blockquote>
-
-<p>في هذا النادي، نحن لا نسير خلف أحد، نحن نكسر القواعد، ونخلق طريقنا الخاص. وُلد MUTINY من رحم الفوضى. اسمنا يعني التمرّد، العصيان، ورفض الخضوع. لسنا مجرد نادٍ، بل فكرة: أن تقف ضد التيار، أن تلعب بأسلوبك، وأن تفرض هيبتك دون إذن أحد. نحن الفريق الذي لا يخشى المجازفة، نُهاجم بعزيمة لا تنكسر، وندافع بشراسة لا تُقهر.</p>
-
-<p><strong> "MUTINY ليس مجرد نادي..."</strong></p>
-"""
-    },
-    "achievements": {
-        "title": "منجزات النادي",
-        "hero_image": "trophy.jpg",
-        "content_html": "<p>نادي MUTINY معكم يصنع التاريخ بإذن الله تعالى</p>"
-    },
-    "players": {
-        "title": "إحصائيات اللاعبين",
-        "hero_image": "stats.jpg",
-        "content_html": """
-<h3>الأكثر تهديفاً:</h3>
-<ol>
-  <li>اللاعب 1 — بـ ( ) هدف</li>
-  <li>اللاعب 2 — بـ ( ) هدف</li>
-  <li>اللاعب 3 — بـ ( ) هدف</li>
-</ol>
-
-<h3>الأكثر صناعة:</h3>
-<ol>
-  <li>اللاعب 1 — بـ ( ) صناعة</li>
-  <li>اللاعب 2 — بـ ( ) صناعة</li>
-  <li>اللاعب 3 — بـ ( ) صناعة</li>
-</ol>
-
-<h3>نجوم مباريات النادي:</h3>
-<ol>
-  <li>(اسم) — رجل المباراة ( ) مرة</li>
-  <li>(اسم) — رجل المباراة ( ) مرة</li>
-  <li>(اسم) — رجل المباراة ( ) مرة</li>
-</ol>
-"""
-    },
-    "presidents": {
-        "title": "الرؤساء",
-        "hero_image": "president.jpg",
-        "content_html": """
-<ul>
-  <li><strong>سالم الشهري</strong><br>Online ID: sa-1-0</li>
-  <li><strong>إبراهيم الشهري</strong><br>Online ID: IBRA_SH47</li>
-  <li><strong>عبدالله الشهري</strong><br>Online ID: ad_7ull</li>
-  <li><strong>أحمد الشهري</strong><br>Online ID: NINJA_AL507</li>
-</ul>
-"""
-    },
-    "kits": {
-        "title": "أطقم وملعب النادي",
-        "hero_image": "kits.jpg",
-        "content_html": """
-<h3>1- ملعب النادي :</h3>
-<p>ملعب نادي MUTINY ( ) بسعة ( ) مشجع.</p>
-
-<h3>2- أطقم النادي :</h3>
-
-<div class="kit">
-  <img src="/static/kits1.jpg" alt="kits1" class="kit-thumb">
-  <p><strong>الطقم الأول</strong></p>
-</div>
-
-<div class="kit">
-  <img src="/static/kits2.jpg" alt="kits2" class="kit-thumb">
-  <p><strong>الطقم الثاني</strong></p>
-</div>
-
-<div class="kit">
-  <img src="/static/kits3.jpg" alt="kits3" class="kit-thumb">
-  <p><strong>الطقم الثالث</strong></p>
-</div>
-
-<div class="kit">
-  <img src="/static/kits4.jpg" alt="kits4" class="kit-thumb">
-  <p><strong>طقم الحراس</strong></p>
-</div>
-
-"""
+# --- اللون الخلفي (لون رمادي فاتح) ---
+st.markdown(
+    """
+    <style>
+    .main {
+        background-color: #2E2E2E;
+        color: white;
     }
-}
+    .stApp {
+        background-color: #2E2E2E;
+    }
+    .css-1d391kg {
+        background-color: #2E2E2E;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
+# --- الصفحة الرئيسية ---
+if menu == "الصفحة الرئيسية":
+    st.markdown("<h1 style='text-align:center; font-size:60px;'>MUTINY</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align:center; font-size:24px;'>أهلاً بك في أفضل نادي في FC26</p>", unsafe_allow_html=True)
+    img = Image.open("club1.jpg")
+    st.image(img, use_column_width=True)
 
-@app.route("/")
-def home():
-    page = pages["home"]
-    return render_template("index.html", page=page, menu=pages)
+# --- عن MUTINY ---
+elif menu == "عن MUTINY":
+    st.header("عن MUTINY")
+    img = Image.open("club.jpg")
+    st.image(img, use_column_width=True)
+    st.write("""
+MUTINY، النادي صاحب الفكر المستقبلي الذي سيغيّر معنى البرو كلوب، وذلك لا يقتصر فقط على تصميم النادي وأزياء اللاعبين، بل وأيضًا على اللاعبين أنفسهم، ومرافق النادي، وكذلك لاعبو الذكاء الاصطناعي في الفريق (BOTS)، وإحدى هذه الأفكار هي إنشاء هذا الموقع الخاص بالنادي.
+"نحن لا نتبع القواعد... نحن نتمرّد."
+في هذا النادي، نحن لا نسير خلف أحد، نحن نكسر القواعد، ونخلق طريقنا الخاص.
+وُلد MUTINY من رحم الفوضى.
+اسمنا يعني التمرّد، العصيان، ورفض الخضوع.
+لسنا مجرد نادٍ، بل فكرة:
+أن تقف ضد التيار، أن تلعب بأسلوبك، وأن تفرض هيبتك دون إذن أحد.
+نحن الفريق الذي لا يخشى المجازفة،
+نُهاجم بعزيمة لا تنكسر،
+وندافع بشراسة لا تُقهر.
+"MUTINY ليس مجرد نادي..."
+""")
 
-@app.route("/page/<slug>")
-def show(slug):
-    page = pages.get(slug)
-    if not page:
-        abort(404)
-    return render_template("index.html", page=page, menu=pages)
+# --- منجزات النادي ---
+elif menu == "منجزات النادي":
+    st.header("منجزات النادي")
+    img = Image.open("trophy.jpg")
+    st.image(img, use_column_width=True)
+    st.write("نادي MUTINY معكم يصنع التاريخ بإذن الله تعالى")
 
+# --- إحصائيات اللاعبين ---
+elif menu == "إحصائيات اللاعبين":
+    st.header("إحصائيات اللاعبين")
+    img = Image.open("stats.jpg")
+    st.image(img, use_column_width=True)
+    st.subheader("الأكثر تهديفاً")
+    st.write("1- ( ) بـ ( ) هدف")
+    st.write("2- ( ) بـ ( ) هدف")
+    st.write("3- ( ) بـ ( ) هدف")
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    st.subheader("الأكثر صناعة")
+    st.write("1- ( ) بـ ( ) صناعة")
+    st.write("2- ( ) بـ ( ) صناعة")
+    st.write("3- ( ) بـ ( ) صناعة")
+
+    st.subheader("نجوم مباريات النادي")
+    st.write("1- ( ) رجل المباراة ( ) مرة")
+    st.write("2- ( ) رجل المباراة ( ) مرة")
+    st.write("3- ( ) رجل المباراة ( ) مرة")
+
+# --- الرؤساء ---
+elif menu == "الرؤساء":
+    st.header("الرؤساء")
+    img = Image.open("president.jpg")
+    st.image(img, use_column_width=True)
+    st.write("سالم الشهري - Online ID: sa-1-0")
+    st.write("إبراهيم الشهري - Online ID: IBRA_SH47")
+    st.write("عبدالله الشهري - Online ID: ad_7ull")
+    st.write("أحمد الشهري - Online ID: NINJA_AL507")
+
+# --- أطقم وملعب النادي ---
+elif menu == "أطقم وملعب النادي":
+    st.header("أطقم وملعب النادي")
+    img = Image.open("kits.jpg")
+    st.image(img, use_column_width=True)
+    st.write("1- ملعب النادي: ملعب نادي MUTINY ( ) بسعة ( ) مشجع.")
+    st.write("2- أطقم النادي:")
+    st.write("- الطقم الأول")
+    st.write("- الطقم الثاني")
+    st.write("- الطقم الثالث")
+    st.write("- طقم الحراس")
